@@ -13,84 +13,61 @@
   <link rel="stylesheet" href="assets/css/github.css">
 
   <link rel="import" href="sections/about.html">
-  <link rel="import" href="sections/windows/windows.html">
-  <link rel="import" href="sections/windows/crash-hang.html">
-  <link rel="import" href="sections/menus/menus.html">
-  <link rel="import" href="sections/menus/shortcuts.html">
-  <link rel="import" href="sections/native-ui/ex-links-file-manager.html">
-  <link rel="import" href="sections/native-ui/dialogs.html">
-  <link rel="import" href="sections/native-ui/tray.html">
-  <link rel="import" href="sections/communication/ipc.html">
-  <link rel="import" href="sections/system/app-sys-information.html">
-  <link rel="import" href="sections/system/clipboard.html">
-  <link rel="import" href="sections/system/protocol-handler.html">
-  <link rel="import" href="sections/media/pdf.html">
-  <link rel="import" href="sections/media/desktop-capturer.html">
 </head>
 <body>
 
   <nav class="nav js-nav">
     <header class="nav-header">
-      <h1 class="nav-title">Electron <strong>API Demos</strong></h1>
+      <h1 class="nav-title">OID标示管理系统(<strong>Demo</strong>)</h1>
       <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
     </header>
 
-    <div class="nav-item u-category-windows">
+    <div class="nav-item u-category-search">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
-        Windows
+        标识查找
       </h5>
-      <button type="button" id="button-windows" data-section="windows" class="nav-button">Create and manage <em>windows</em></button>
-      <button type="button" id="button-crash-hang" data-section="crash-hang" class="nav-button">Handling window <em>crashes and hangs</em></button>
+      <button type="button" id="button-search-by-id" data-section="search-by-id" class="nav-button">按编号查找</button>
+      <button type="button" id="button-search-by-qrcode" data-section="search-by-qrcode" class="nav-button">二维码查找</button>
     </div>
 
-    <div class="nav-item u-category-menu">
+    <div class="nav-item u-category-add">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-menu"></use></svg>
-        Menus
+        标识添加
       </h5>
-      <button type="button" id="button-menus" data-section="menus" class="nav-button">Customize <em>menus</em> </button>
-      <button type="button" id="button-shortcuts" data-section="shortcuts" class="nav-button">Register keyboard <em>shortcuts</em></button>
+      <button type="button" id="button-add-by-id" data-section="add-by-id" class="nav-button">按编号添加</button>
+      <button type="button" id="button-add-by-qrcode" data-section="add-by-qrcode" class="nav-button">二维码添加</button>
     </div>
 
-    <div class="nav-item u-category-native-ui">
+    <div class="nav-item u-category-revise">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-native-ui"></use></svg>
-        Native User Interface</h5>
-      <button type="button" id="button-ex-links-file-manager" data-section="ex-links-file-manager" class="nav-button">Open <em>external links</em> or system <em>file manager</em></button>
-      <button type="button" id="button-dialogs" data-section="dialogs" class="nav-button">Use system <em>dialogs</em></button>
-      <button type="button" id="button-tray" data-section="tray" class="nav-button">Put your app in the <em>tray</em></button>
+        标识修改
+      </h5>
+      <button type="button" id="button-revise-by-id" data-section="revise-by-id" class="nav-button">按编号修改</button>
+      <button type="button" id="button-revise-by-qrcode" data-section="revise-by-qrcode" class="nav-button">二维码修改</button>
     </div>
 
-    <div class="nav-item u-category-communication">
+    <div class="nav-item u-category-delete">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-communication"></use></svg>
-        Communication
+        标识删除
       </h5>
-      <button type="button" id="button-ipc" data-section="ipc" class="nav-button">Communicate between the <em>two processes</em></button>
+      <button type="button" id="button-delete-by-id" data-section="delete-by-id" class="nav-button">按编号删除</button>
+      <button type="button" id="button-delete-by-qrcode" data-section="delete-by-qrcode" class="nav-button">二维码删除</button>
     </div>
 
     <div class="nav-item u-category-system">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-system"></use></svg>
-        System
+        系统设置
       </h5>
-      <button type="button" id="button-app-sys-information" data-section="app-sys-information" class="nav-button" >Get app or user <em>system information</em></button>
-      <button type="button" id="button-clipboard" data-section="clipboard" class="nav-button">Copy and paste from the <em>clipboard</em></button>
-      <button type="button" id="button-protocol" data-section="protocol" class="nav-button">Launch app from <em>protocol handler</em></button>
-    </div>
-
-    <div class="nav-item u-category-media">
-      <h5 class="nav-category">
-        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-media"></use></svg>
-        Media
-      </h5>
-      <button type="button" id="button-pdf" data-section="pdf" class="nav-button"><em>Print</em> to PDF</button>
-      <button type="button" id="button-desktop-capturer" data-section="desktop-capturer" class="nav-button">Take a <em>screenshot</em></button>
+      <button type="button" id="button-system-font" data-section="system-font" class="nav-button" >字体样式</button>
     </div>
 
     <footer class="nav-footer">
-      <button type="button" id="button-about" data-modal="about" class="nav-footer-button">About</button>
+      <button type="button" id="button-about" data-modal="about" class="nav-footer-button">说明</button>
       <a class="nav-footer-logo" href="https://github.com">
         <svg class="nav-footer-icon"><use xlink:href="assets/img/icons.svg#icon-love"></use></svg>
       </a>
