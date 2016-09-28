@@ -13,42 +13,42 @@
   <link rel="stylesheet" href="assets/css/github.css">
 
   <link rel="import" href="sections/about.html">
-  <link rel="import" href="sections/search-by-id.html">
-  <link rel="import" href="sections/search-by-qrcode.html">
+  <link rel="import" href="sections/retrieve-by-id.html">
+  <link rel="import" href="sections/retrieve-by-qrcode.html">
 </head>
 <body>
 
   <nav class="nav js-nav">
     <header class="nav-header">
-      <h1 class="nav-title">OID标示管理系统(<strong>Demo</strong>)</h1>
+      <h1 class="nav-title">OID标示管理系统<strong>(Demo)</strong></h1>
       <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
     </header>
 
-    <div class="nav-item u-category-search">
+    <div class="nav-item u-category-retrieve">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
         标识查找
       </h5>
-      <button type="button" id="button-search-by-id" data-section="search-by-id" class="nav-button">按编号查找</button>
-      <button type="button" id="button-search-by-qrcode" data-section="search-by-qrcode" class="nav-button">二维码查找</button>
+      <button type="button" id="button-retrieve-by-id" data-section="retrieve-by-id" class="nav-button">按编号查找</button>
+      <button type="button" id="button-retrieve-by-qrcode" data-section="retrieve-by-qrcode" class="nav-button">二维码查找</button>
     </div>
 
-    <div class="nav-item u-category-add">
+    <div class="nav-item u-category-create">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-menu"></use></svg>
         标识添加
       </h5>
-      <button type="button" id="button-add-by-id" data-section="add-by-id" class="nav-button">按编号添加</button>
-      <button type="button" id="button-add-by-qrcode" data-section="add-by-qrcode" class="nav-button">二维码添加</button>
+      <button type="button" id="button-create-by-id" data-section="create-by-id" class="nav-button">按编号添加</button>
+      <button type="button" id="button-create-by-qrcode" data-section="create-by-qrcode" class="nav-button">二维码添加</button>
     </div>
 
-    <div class="nav-item u-category-revise">
+    <div class="nav-item u-category-update">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-native-ui"></use></svg>
         标识修改
       </h5>
-      <button type="button" id="button-revise-by-id" data-section="revise-by-id" class="nav-button">按编号修改</button>
-      <button type="button" id="button-revise-by-qrcode" data-section="revise-by-qrcode" class="nav-button">二维码修改</button>
+      <button type="button" id="button-update-by-id" data-section="update-by-id" class="nav-button">按编号修改</button>
+      <button type="button" id="button-update-by-qrcode" data-section="update-by-qrcode" class="nav-button">二维码修改</button>
     </div>
 
     <div class="nav-item u-category-delete">
