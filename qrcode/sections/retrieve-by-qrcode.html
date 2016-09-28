@@ -1,5 +1,5 @@
 <template class="task-template">
-  <section id="search-by-qrcode-section" class="section js-section u-category-search">
+  <section id="retrieve-by-qrcode-section" class="section js-section u-category-retrieve">
     <header class="section-header">
       <div class="section-wrapper">
         <h1>
@@ -11,22 +11,21 @@
 
     <div class="demo">
       <div class="demo-wrapper">
-        <button id="search-by-qrcode-demo-toggle" class="js-container-target demo-toggle-button">点击展开
+        <button id="retrieve-by-qrcode-demo-toggle" class="js-container-target demo-toggle-button">点击展开
           <div class="demo-meta u-avoid-clicks">输入具体内容</div>
         </button>
         <div class="demo-box">
           <div class="demo-controls">
-            <button class="demo-button" id="search-by-qrcode">确定</button>
-            <input class="demo-input" id="search-by-qrcode-input" placeholder="Click copy."></input>
-            <span class="demo-response" id="search-by-qrcode-reply"></span>
+            <button class="demo-button" id="retrieve-by-qrcode">确定</button>
+            <input class="demo-input" id="retrieve-by-qrcode-input" placeholder="Click."></input>
+            <span class="demo-response" id="retrieve-by-qrcode-reply"></span>
           </div>
-          <h5>留空</h5>
         </div>
       </div>
     </div>
 
     <script type="text/javascript">
-      require('./renderer-process/search-by-qrcode')
+      require('./renderer-process/retrieve-by-qrcode')
     </script>
 
   </section>
