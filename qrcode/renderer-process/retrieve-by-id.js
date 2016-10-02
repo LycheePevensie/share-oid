@@ -5,6 +5,9 @@ const RetrieveByIdInput = document.getElementById('retrieve-by-id-input')
 
 RetrieveByIdBtn.addEventListener('click', function () {
   ipc.send('RetrieveById-message', RetrieveByIdInput.value)
+  if (RetrieveByIdInput.value !== '') {
+    RetrieveByIdInput.value = ''
+  }
   RetrieveByIdInput.placeholder = 'Retrieved!'
 })
 
