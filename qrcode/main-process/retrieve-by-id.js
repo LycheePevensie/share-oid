@@ -6,7 +6,7 @@ ipc.on('RetrieveById-message', function (event, arg) {
   let output = new Object()
   let target = `${arg}`
   let str = ''
-  fs.readFile(path.join(__dirname, 'data.json'), function (err, input) {
+  fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
     if (err) {
       throw err
     }
@@ -18,11 +18,11 @@ ipc.on('RetrieveById-message', function (event, arg) {
     if (output.hasOwnProperty(target)) {
       str = output[target].toString()
     }
-    fs.writeFile(path.join(__dirname, 'data.json'), JSON.stringify(output), function (err) {
+    fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
       if (err) {
         throw err
       }
-    });
-  });
+    })
+  })
   event.sender.send('RetrieveById-reply', str)
 })
