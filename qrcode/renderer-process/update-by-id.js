@@ -1,4 +1,5 @@
 const ipc = require('electron').ipcRenderer
+const qr = require('qr-image')
 
 const UpdateByIdBtn = document.getElementById('update-by-id')
 const UpdateByIdInput = document.getElementById('update-by-id-input')
@@ -13,5 +14,7 @@ UpdateByIdBtn.addEventListener('click', function () {
 
 ipc.on('UpdateById-reply', function (event, arg) {
   let message = `${arg}`
+  let qr_str = qr.imageSync(message, {type: 'svg', size: '5'})
   document.getElementById('update-by-id-reply').innerHTML = message
+  document.getElementById('update-by-id-reply-qrcode').innerHTML = qr_str
 })
