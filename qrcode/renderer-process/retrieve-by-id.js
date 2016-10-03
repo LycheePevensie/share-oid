@@ -15,5 +15,6 @@ RetrieveByIdBtn.addEventListener('click', function () {
 ipc.on('RetrieveById-reply', function (event, arg) {
   let message = `${arg}`
   let qr_str = qr.imageSync(message, {type: 'svg', size: '5'})
-  document.getElementById('retrieve-by-id-reply').innerHTML = qr_str
+  document.getElementById('retrieve-by-id-reply').innerHTML = message
+  document.getElementById('retrieve-by-id-reply-qrcode').innerHTML = qr_str
 })
