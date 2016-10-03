@@ -13,10 +13,10 @@ ipc.on('DeleteById-message', function (event, arg) {
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
     }
-    let str = 'Not Found!'
+    let str = target+','+'Not Found!'
     if (output.hasOwnProperty(target)) {
-      str = output[target].toString();
-      delete output[target];
+      str = target+','+output[target].toString()
+      delete output[target]
     }
     fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
       if (err) {
