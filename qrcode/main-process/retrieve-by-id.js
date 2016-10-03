@@ -15,7 +15,7 @@ ipc.on('RetrieveById-message', function (event, arg) {
     }
     let str = 'Not Found!'
     if (output.hasOwnProperty(target)) {
-      str = output[target].toString()
+      str = target+','+output[target].toString()
     }
     fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
       if (err) {
