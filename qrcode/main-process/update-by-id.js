@@ -14,10 +14,10 @@ ipc.on('UpdateById-message', function (event, arg) {
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
     }
-    let str = 'Not Found!'
+    let str = target+','+'Not Found!'
     if (output.hasOwnProperty(target)) {
-      output[target] = [].concat(arr);
-      str = output[target].toString();
+      output[target] = [].concat(arr)
+      str = target+','+output[target].toString()
     }
     fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
       if (err) {
