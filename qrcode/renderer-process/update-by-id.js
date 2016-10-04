@@ -18,3 +18,9 @@ ipc.on('UpdateById-reply', function (event, arg) {
   document.getElementById('update-by-id-reply').innerHTML = message
   document.getElementById('update-by-id-reply-qrcode').innerHTML = qr_str
 })
+
+const UpdateByIdPDF = document.getElementById('update-by-id-pdf')
+
+UpdateByIdPDF.addEventListener('click', function (event) {
+  ipc.send('UpdateById-pdf')
+})
