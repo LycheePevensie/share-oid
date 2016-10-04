@@ -18,3 +18,9 @@ ipc.on('CreateById-reply', function (event, arg) {
   document.getElementById('create-by-id-reply').innerHTML = message
   document.getElementById('create-by-id-reply-qrcode').innerHTML = qr_str
 })
+
+const CreateByIdPDF = document.getElementById('create-by-id-pdf')
+
+CreateByIdPDF.addEventListener('click', function (event) {
+  ipc.send('CreateById-pdf')
+})
