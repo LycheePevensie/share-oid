@@ -24,3 +24,14 @@ const RetrieveByIdPDF = document.getElementById('retrieve-by-id-pdf')
 RetrieveByIdPDF.addEventListener('click', function (event) {
   ipc.send('RetrieveById-pdf')
 })
+
+const RetrieveByIdShow = document.getElementById('retrieve-by-id-show')
+
+RetrieveByIdShow.addEventListener('click', function () {
+  ipc.send('RetrieveByIdShow-message', 'show')
+})
+
+ipc.on('RetrieveByIdShow-reply', function (event, arg) {
+  let message = `${arg}`
+  document.getElementById('retrieve-by-id-show-reply').innerHTML = message
+})
