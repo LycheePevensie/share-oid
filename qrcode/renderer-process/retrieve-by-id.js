@@ -18,3 +18,9 @@ ipc.on('RetrieveById-reply', function (event, arg) {
   document.getElementById('retrieve-by-id-reply').innerHTML = message
   document.getElementById('retrieve-by-id-reply-qrcode').innerHTML = qr_str
 })
+
+const RetrieveByIdPDF = document.getElementById('retrieve-by-id-pdf')
+
+RetrieveByIdPDF.addEventListener('click', function (event) {
+  ipc.send('RetrieveById-pdf')
+})
