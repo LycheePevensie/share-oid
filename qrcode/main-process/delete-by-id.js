@@ -26,3 +26,24 @@ ipc.on('DeleteById-message', function (event, arg) {
     })
   })
 })
+
+const os = require('os')
+const electron = require('electron')
+const BrowserWindow = electron.BrowserWindow
+const shell = electron.shell
+
+ipc.on('DeleteById-pdf', function (event) {
+  let pdfPath = path.join(os.tmpdir(), 'print.pdf')
+  let win = BrowserWindow.fromWebContents(event.sender)
+  win.webContents.printToPDF({}, function (error, data) {
+    if (error) {
+      throw error
+    }
+    fs.writeFile(pdfPath, data, function (error) {
+      if (error) {
+        throw error
+      }
+      shell.openExternal('file://'+pdfPath)
+    })
+  })
+})
