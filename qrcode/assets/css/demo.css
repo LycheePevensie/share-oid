@@ -173,11 +173,15 @@
   word-break: break-word;
 }
 
+.demo-controls .demo-response {
+  color: black;
+}
+
 
 /* ProTip ----------------------------- */
 
 .demo-protip {
-  margin-top: 2rem;
+  margin: 2rem auto;
   padding: 1.5rem 2rem 2rem 2rem;
   border: 1px solid hsla(0,0%,0%,.06);
   border-radius: 6px;
