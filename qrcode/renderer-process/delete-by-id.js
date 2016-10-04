@@ -24,3 +24,14 @@ const DeleteByIdPDF = document.getElementById('delete-by-id-pdf')
 DeleteByIdPDF.addEventListener('click', function (event) {
   ipc.send('DeleteById-pdf')
 })
+
+const DeleteByIdShow = document.getElementById('delete-by-id-show')
+
+DeleteByIdShow.addEventListener('click', function () {
+  ipc.send('DeleteByIdShow-message', 'show')
+})
+
+ipc.on('DeleteByIdShow-reply', function (event, arg) {
+  let message = `${arg}`
+  document.getElementById('delete-by-id-show-reply').innerHTML = message
+})
