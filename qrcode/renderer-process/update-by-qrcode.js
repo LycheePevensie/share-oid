@@ -34,3 +34,14 @@ ipc.on('UpdateByQrcode-reply', function (event, arg) {
   let message = `${arg}`
   document.getElementById('update-by-qrcode-reply').innerHTML = message
 })
+
+const UpdateByQrcodeShow = document.getElementById('update-by-qrcode-show')
+
+UpdateByQrcodeShow.addEventListener('click', function () {
+  ipc.send('UpdateByQrcodeShow-message', 'show')
+})
+
+ipc.on('UpdateByQrcodeShow-reply', function (event, arg) {
+  let message = `${arg}`
+  document.getElementById('update-by-qrcode-show-reply').innerHTML = message
+})

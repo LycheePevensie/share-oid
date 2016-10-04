@@ -35,3 +35,14 @@ ipc.on('RetrieveByQrcode-reply', function (event, arg) {
   let message = `${arg}`
   document.getElementById('retrieve-by-qrcode-reply').innerHTML = message
 })
+
+const RetrieveByQrcodeShow = document.getElementById('retrieve-by-qrcode-show')
+
+RetrieveByQrcodeShow.addEventListener('click', function () {
+  ipc.send('RetrieveByQrcodeShow-message', 'show')
+})
+
+ipc.on('RetrieveByQrcodeShow-reply', function (event, arg) {
+  let message = `${arg}`
+  document.getElementById('retrieve-by-qrcode-show-reply').innerHTML = message
+})

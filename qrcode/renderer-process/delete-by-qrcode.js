@@ -35,3 +35,14 @@ ipc.on('DeleteByQrcode-reply', function (event, arg) {
   let message = `${arg}`
   document.getElementById('delete-by-qrcode-reply').innerHTML = message
 })
+
+const DeleteByQrcodeShow = document.getElementById('delete-by-qrcode-show')
+
+DeleteByQrcodeShow.addEventListener('click', function () {
+  ipc.send('DeleteByQrcodeShow-message', 'show')
+})
+
+ipc.on('DeleteByQrcodeShow-reply', function (event, arg) {
+  let message = `${arg}`
+  document.getElementById('delete-by-qrcode-show-reply').innerHTML = message
+})

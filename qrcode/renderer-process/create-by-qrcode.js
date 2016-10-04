@@ -34,3 +34,14 @@ ipc.on('CreateByQrcode-reply', function (event, arg) {
   let message = `${arg}`
   document.getElementById('create-by-qrcode-reply').innerHTML = message
 })
+
+const CreateByQrcodeShow = document.getElementById('create-by-qrcode-show')
+
+CreateByQrcodeShow.addEventListener('click', function () {
+  ipc.send('CreateByQrcodeShow-message', 'show')
+})
+
+ipc.on('CreateByQrcodeShow-reply', function (event, arg) {
+  let message = `${arg}`
+  document.getElementById('create-by-qrcode-show-reply').innerHTML = message
+})
