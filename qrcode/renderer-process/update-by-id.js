@@ -24,3 +24,14 @@ const UpdateByIdPDF = document.getElementById('update-by-id-pdf')
 UpdateByIdPDF.addEventListener('click', function (event) {
   ipc.send('UpdateById-pdf')
 })
+
+const UpdateByIdShow = document.getElementById('update-by-id-show')
+
+UpdateByIdShow.addEventListener('click', function () {
+  ipc.send('UpdateByIdShow-message', 'show')
+})
+
+ipc.on('UpdateByIdShow-reply', function (event, arg) {
+  let message = `${arg}`
+  document.getElementById('update-by-id-show-reply').innerHTML = message
+})
