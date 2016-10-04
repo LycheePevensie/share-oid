@@ -24,3 +24,14 @@ const CreateByIdPDF = document.getElementById('create-by-id-pdf')
 CreateByIdPDF.addEventListener('click', function (event) {
   ipc.send('CreateById-pdf')
 })
+
+const CreateByIdShow = document.getElementById('create-by-id-show')
+
+CreateByIdShow.addEventListener('click', function () {
+  ipc.send('CreateByIdShow-message', 'show')
+})
+
+ipc.on('CreateByIdShow-reply', function (event, arg) {
+  let message = `${arg}`
+  document.getElementById('create-by-id-show-reply').innerHTML = message
+})
