@@ -48,3 +48,24 @@ ipc.on('CreateById-pdf', function (event) {
     })
   })
 })
+
+ipc.on('CreateByIdShow-message', function (event, arg) {
+  let output = new Object()
+  fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
+    if (err) {
+      throw err
+    }
+    let str = ''
+    let obj = JSON.parse(input)
+    for (let oid in obj) {
+      output[oid] = [].concat(obj[oid])
+      str = str+oid+','+output[oid].toString()+'<br>'
+    }
+    fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
+      if (err) {
+        throw err
+      }
+      event.sender.send('CreateByIdShow-reply', str)
+    })
+  })
+})
