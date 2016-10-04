@@ -18,3 +18,9 @@ ipc.on('DeleteById-reply', function (event, arg) {
   document.getElementById('delete-by-id-reply').innerHTML = message
   document.getElementById('delete-by-id-reply-qrcode').innerHTML = qr_str
 })
+
+const DeleteByIdPDF = document.getElementById('delete-by-id-pdf')
+
+DeleteByIdPDF.addEventListener('click', function (event) {
+  ipc.send('DeleteById-pdf')
+})
