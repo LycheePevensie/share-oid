@@ -131,6 +131,7 @@
 .demo-controls {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .demo-button {
@@ -161,6 +162,8 @@
   padding: .4em .8em;
   color: inherit;
   background-color: transparent;
+  width: 600px;
+  margin: 0.5em auto;
 }
 .demo-input:focus {
   outline: none;
