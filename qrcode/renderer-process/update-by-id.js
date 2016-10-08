@@ -2,14 +2,17 @@ const ipc = require('electron').ipcRenderer
 const qr = require('qr-image')
 
 const UpdateByIdBtn = document.getElementById('update-by-id')
-const UpdateByIdInput = document.getElementById('update-by-id-input')
+const UpdateByIdInputIdentifier = document.getElementById('update-by-id-input-identifier')
+const UpdateByIdInputName = document.getElementById('update-by-id-input-name')
+const UpdateByIdInputPathema = document.getElementById('update-by-id-input-pathema')
+const UpdateByIdInputOthers = document.getElementById('update-by-id-input-others')
 
 UpdateByIdBtn.addEventListener('click', function () {
-  ipc.send('UpdateById-message', UpdateByIdInput.value)
-  if (UpdateByIdInput.value !== '') {
-    UpdateByIdInput.value = ''
-  }
-  UpdateByIdInput.placeholder = 'Updated!'
+  ipc.send('UpdateById-message', '1.2.156.112606.1.2.1.1.'+UpdateByIdInputIdentifier.value+';'+UpdateByIdInputName.value+';'+UpdateByIdInputPathema.value+';'+UpdateByIdInputOthers.value)
+  UpdateByIdInputIdentifier.value = ''
+  UpdateByIdInputName.value = ''
+  UpdateByIdInputPathema.value = ''
+  UpdateByIdInputOthers.value = ''
 })
 
 ipc.on('UpdateById-reply', function (event, arg) {
