@@ -163,7 +163,7 @@
   color: inherit;
   background-color: transparent;
   width: 600px;
-  margin: 0.5em auto;
+  margin: 0.5rem 0rem auto;
 }
 .demo-input:focus {
   outline: none;
@@ -184,7 +184,7 @@
 /* ProTip ----------------------------- */
 
 .demo-protip {
-  margin: 2rem auto;
+  margin: 0.5rem auto;
   padding: 1.5rem 2rem 2rem 2rem;
   border: 1px solid hsla(0,0%,0%,.06);
   border-radius: 6px;
