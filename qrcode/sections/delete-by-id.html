@@ -4,23 +4,26 @@
       <div class="section-wrapper">
         <h1>
           <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-communication"></use></svg>
-          按编号删除
+          标识删除
         </h1>
+        <h3>①输入编号，点击“确定”，结果栏将显示去掉的被标识的对象及其附加信息，并生成二维码</h3>
+        <h3>②点击“打印”，即可打印页面，以便使用</h3>
       </div>
     </header>
 
     <div class="demo">
       <div class="demo-wrapper">
-        <button id="delete-by-id-demo-toggle" class="js-container-target demo-toggle-button">点击展开
-          <div class="demo-meta u-avoid-clicks">输入具体内容</div>
+        <button id="delete-by-id-demo-toggle" class="js-container-target demo-toggle-button">通过编号删除标识
+          <div class="demo-meta u-avoid-clicks">使用方法：输入编号 <span class="demo-meta-divider">|</span> 点击“确定”</div>
         </button>
         <div class="demo-box">
           <div class="demo-controls">
             <button class="demo-button" id="delete-by-id">确定</button>
-            <input class="demo-input" id="delete-by-id-input" placeholder="Click!"></input>
+            <input class="demo-input" id="delete-by-id-input" placeholder="输入编号..."></input>
           </div>
 
           <div class="demo-protip">
+            <h2>删除结果</h2>
             <button class="demo-button" id="delete-by-id-pdf">打印</button>
             <span class="demo-response" id="delete-by-id-reply"></span>
           </div>
@@ -34,8 +37,8 @@
 
     <div class="demo">
       <div class="demo-wrapper">
-        <button id="delete-by-id-show-demo-toggle" class="js-container-target demo-toggle-button">点击展开
-          <div class="demo-meta u-avoid-clicks">输入具体内容</div>
+        <button id="delete-by-id-show-demo-toggle" class="js-container-target demo-toggle-button">查询所有标识
+          <div class="demo-meta u-avoid-clicks">使用方法：点击“确定”</div>
         </button>
         <div class="demo-box">
           <div class="demo-controls">
