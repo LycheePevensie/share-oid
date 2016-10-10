@@ -8,7 +8,7 @@ const UpdateByIdInputPathema = document.getElementById('update-by-id-input-pathe
 const UpdateByIdInputOthers = document.getElementById('update-by-id-input-others')
 
 UpdateByIdBtn.addEventListener('click', function () {
-  ipc.send('UpdateById-message', '1.2.156.112606.1.2.1.1.'+UpdateByIdInputIdentifier.value+';'+UpdateByIdInputName.value+';'+UpdateByIdInputPathema.value+';'+UpdateByIdInputOthers.value)
+  ipc.send('UpdateById-message', UpdateByIdInputIdentifier.value+';'+UpdateByIdInputName.value+';'+UpdateByIdInputPathema.value+';'+UpdateByIdInputOthers.value)
   UpdateByIdInputIdentifier.value = ''
   UpdateByIdInputName.value = ''
   UpdateByIdInputPathema.value = ''
