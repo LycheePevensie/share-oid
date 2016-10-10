@@ -8,7 +8,13 @@ const CreateByIdInputPathema = document.getElementById('create-by-id-input-pathe
 const CreateByIdInputOthers = document.getElementById('create-by-id-input-others')
 
 CreateByIdBtn.addEventListener('click', function () {
-  ipc.send('CreateById-message', '1.2.156.112606.1.2.1.1.'+CreateByIdInputIdentifier.value+';'+CreateByIdInputName.value+';'+CreateByIdInputPathema.value+';'+CreateByIdInputOthers.value)
+  let str = CreateByIdInputIdentifier.value
+  let gender = (parseInt(str[16])%2 === 1) ? '1' : '2'
+  let location = str.slice(0, 3)
+  let birth = str.slice(6, 10)
+  let tag = Math.floor(Math.random()*10000)
+  str = gender+'.'+location+'.'+birth+'.'+tag
+  ipc.send('CreateById-message', '1.2.156.112606.1.2.1.1.'+str+';'+CreateByIdInputName.value+';'+CreateByIdInputPathema.value+';'+CreateByIdInputOthers.value)
   CreateByIdInputIdentifier.value = ''
   CreateByIdInputName.value = ''
   CreateByIdInputPathema.value = ''
