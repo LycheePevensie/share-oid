@@ -13,7 +13,7 @@ ipc.on('RetrieveById-message', function (event, arg) {
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
     }
-    let str = target+','+'Not Found!'
+    let str = target+' Not Found!'
     if (output.hasOwnProperty(target)) {
       str = target+','+output[target].toString()
     }
