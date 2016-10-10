@@ -49,6 +49,7 @@ ipc.on('RetrieveById-pdf', function (event) {
 
 ipc.on('RetrieveByIdShow-message', function (event, arg) {
   let output = new Object()
+  let target = eval(`${arg}`)
   fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
     if (err) {
       throw err
@@ -57,7 +58,9 @@ ipc.on('RetrieveByIdShow-message', function (event, arg) {
     let obj = JSON.parse(input)
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
-      str = str+oid+','+output[oid].toString()+'<br>'
+      if (oid.match(target)) {
+        str = str+oid+','+output[oid].toString()+'<br>'
+      }
     }
     fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
       if (err) {

@@ -26,9 +26,15 @@ RetrieveByIdPDF.addEventListener('click', function (event) {
 })
 
 const RetrieveByIdShow = document.getElementById('retrieve-by-id-show')
+const RetrieveByIdShowGender = document.getElementById('retrieve-by-id-show-gender')
+const RetrieveByIdShowLocation = document.getElementById('retrieve-by-id-show-location')
+const RetrieveByIdShowBirth = document.getElementById('retrieve-by-id-show-birth')
 
 RetrieveByIdShow.addEventListener('click', function () {
-  ipc.send('RetrieveByIdShow-message', 'show')
+  let gender = (RetrieveByIdShowGender.value === '') ? '[0-9].' : RetrieveByIdShowGender.value+'.'
+  let location = (RetrieveByIdShowLocation.value === '') ? '[0-9]{3}.' : RetrieveByIdShowLocation.value+'.'
+  let birth = (RetrieveByIdShowBirth.value === '') ? '[0-9]{4}.' : (2016-parseInt(RetrieveByIdShowBirth.value)).toString()+'.'
+  ipc.send('RetrieveByIdShow-message', '/1.2.156.112606.1.2.1.1.'+gender+location+birth+'/')
 })
 
 ipc.on('RetrieveByIdShow-reply', function (event, arg) {
