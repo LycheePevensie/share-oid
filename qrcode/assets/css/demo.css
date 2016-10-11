@@ -180,6 +180,26 @@
   color: black;
 }
 
+.demo-select {
+  flex: 1;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 1.2em;
+  padding: .4em .8em;
+  color: inherit;
+  background-color: transparent;
+  width: 600px;
+  margin: 0.5rem 0rem auto;
+  size: 1;
+}
+
+.demo-select:focus {
+  outline: none;
+  border-color: hsl(0,0%,80%);
+  background-color: white;
+}
+
 
 /* ProTip ----------------------------- */
 
