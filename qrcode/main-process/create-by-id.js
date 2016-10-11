@@ -36,7 +36,7 @@ const shell = electron.shell
 ipc.on('CreateById-pdf', function (event) {
   let pdfPath = path.join(os.tmpdir(), 'print.pdf')
   let win = BrowserWindow.fromWebContents(event.sender)
-  win.webContents.printToPDF({}, function (error, data) {
+  win.webContents.printToPDF({pageSize: 'A3'}, function (error, data) {
     if (error) {
       throw error
     }
