@@ -78,16 +78,10 @@ describe('demo app', function () {
 
   describe('when clicking on a section from the nav bar', function () {
     it('it shows the selected section in the main area', function () {
-      return app.client.isVisible('#windows-section').should.eventually.be.true
-        .click('button[data-section="windows"]').pause(100)
-        .waitForVisible('#windows-section')
-        .isExisting('button.is-selected[data-section="windows"]').should.eventually.be.true
-        .isVisible('#pdf-section').should.eventually.be.false
-        .click('button[data-section="pdf"]').pause(100)
-        .waitForVisible('#pdf-section')
-        .isVisible('#windows-section').should.eventually.be.false
-        .isExisting('button.is-selected[data-section="windows"]').should.eventually.be.false
-        .isExisting('button.is-selected[data-section="pdf"]').should.eventually.be.true
+      return app.client.isVisible('#retrieve-by-id-section').should.eventually.be.true
+        .click('button[data-section="retrieve-by-id"]').pause(100)
+        .waitForVisible('#retrieve-by-id-section')
+        .isExisting('button.is-selected[data-section="retrieve-by-id"]').should.eventually.be.true
     })
   })
 
@@ -96,8 +90,8 @@ describe('demo app', function () {
       let onlyFirstVisible = Array(27).fill(false)
       onlyFirstVisible[0] = true
 
-      return app.client.click('button[data-section="windows"]')
-        .waitForVisible('#windows-section')
+      return app.client.click('button[data-section="retrieve-by-id"]')
+        .waitForVisible('#retrieve-by-id-section')
         .click('.js-container-target')
         .waitForVisible('.demo-box')
         .isVisible('.demo-box').should.eventually.deep.equal(onlyFirstVisible)
@@ -109,11 +103,11 @@ describe('demo app', function () {
       let onlyFirstVisible = Array(27).fill(false)
       onlyFirstVisible[0] = true
 
-      return app.client.waitForVisible('#windows-section')
+      return app.client.waitForVisible('#retrieve-by-id-section')
         .then(restartApp)
         .then(function () {
-          return app.client.waitForVisible('#windows-section')
-            .isVisible('#windows-section').should.eventually.be.true
+          return app.client.waitForVisible('#retrieve-by-id-section')
+            .isVisible('#retrieve-by-id-section').should.eventually.be.true
             .isVisible('.demo-box').should.eventually.deep.equal(onlyFirstVisible)
         })
     })
