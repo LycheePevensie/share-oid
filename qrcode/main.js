@@ -7,7 +7,7 @@ const app = electron.app
 
 const debug = /--debug/.test(process.argv[2])
 
-if (process.mas) app.setName('Electron APIs')
+if (process.mas) app.setName('OID EMPI Demo')
 
 var mainWindow = null
 
