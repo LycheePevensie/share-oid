@@ -7,11 +7,10 @@ ipc.on('CreateById-message', function (event, arg) {
   let output = new Object()
   let arr = `${arg}`.split(';')
   let target = arr.shift()
-  fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
+  storage.get('data', function (err, obj) {
     if (err) {
       throw err
     }
-    let obj = JSON.parse(input)
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
     }
@@ -20,7 +19,7 @@ ipc.on('CreateById-message', function (event, arg) {
       output[target] = [].concat(arr)
       str = target+','+output[target].toString()
     }
-    fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
+    storage.set('data', output, function (err) {
       if (err) {
         throw err
       }
