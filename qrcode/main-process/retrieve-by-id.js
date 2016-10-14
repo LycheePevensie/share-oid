@@ -1,15 +1,15 @@
 const ipc = require('electron').ipcMain
 const fs = require('fs')
 const path = require('path')
+const storage = require('electron-json-storage')
 
 ipc.on('RetrieveById-message', function (event, arg) {
   let output = new Object()
   let target = `${arg}`
-  fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
+  storage.get('data', function (err, obj) {
     if (err) {
       throw err
     }
-    let obj = JSON.parse(input)
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
     }
@@ -17,7 +17,7 @@ ipc.on('RetrieveById-message', function (event, arg) {
     if (output.hasOwnProperty(target)) {
       str = target+','+output[target].toString()
     }
-    fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
+    storage.set('data', output, function (err) {
       if (err) {
         throw err
       }
@@ -50,19 +50,18 @@ ipc.on('RetrieveById-pdf', function (event) {
 ipc.on('RetrieveByIdShow-message', function (event, arg) {
   let output = new Object()
   let target = eval(`${arg}`)
-  fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
+  storage.get('data', function (err, obj) {
     if (err) {
       throw err
     }
     let str = ''
-    let obj = JSON.parse(input)
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
       if (oid.match(target)) {
         str = str+oid+','+output[oid].toString()+'<br>'
       }
     }
-    fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
+    storage.set('data', output, function (err) {
       if (err) {
         throw err
       }
