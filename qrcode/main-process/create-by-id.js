@@ -1,6 +1,7 @@
 const ipc = require('electron').ipcMain
 const fs = require('fs')
 const path = require('path')
+const storage = require('electron-json-storage')
 
 ipc.on('CreateById-message', function (event, arg) {
   let output = new Object()
@@ -51,17 +52,16 @@ ipc.on('CreateById-pdf', function (event) {
 
 ipc.on('CreateByIdShow-message', function (event, arg) {
   let output = new Object()
-  fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
+  storage.get('data', function (err, obj) {
     if (err) {
       throw err
     }
     let str = ''
-    let obj = JSON.parse(input)
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
       str = str+oid+','+output[oid].toString()+'<br>'
     }
-    fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
+    storage.set('data', output, function (err) {
       if (err) {
         throw err
       }
