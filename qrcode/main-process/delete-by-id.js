@@ -1,15 +1,15 @@
 const ipc = require('electron').ipcMain
 const fs = require('fs')
 const path = require('path')
+const storage = require('electron-json-storage')
 
 ipc.on('DeleteById-message', function (event, arg) {
   let output = new Object()
   let target = `${arg}`
-  fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
+  storage.get('data', function (err, obj) {
     if (err) {
       throw err
     }
-    let obj = JSON.parse(input)
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
     }
@@ -18,7 +18,7 @@ ipc.on('DeleteById-message', function (event, arg) {
       str = target+','+output[target].toString()
       delete output[target]
     }
-    fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
+    storage.set('data', output, function (err) {
       if (err) {
         throw err
       }
@@ -50,17 +50,16 @@ ipc.on('DeleteById-pdf', function (event) {
 
 ipc.on('DeleteByIdShow-message', function (event, arg) {
   let output = new Object()
-  fs.readFile(path.join(__dirname, '../data.json'), function (err, input) {
+  storage.get('data', function (err, obj) {
     if (err) {
       throw err
     }
     let str = ''
-    let obj = JSON.parse(input)
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
       str = str+oid+','+output[oid].toString()+'<br>'
     }
-    fs.writeFile(path.join(__dirname, '../data.json'), JSON.stringify(output), function (err) {
+    storage.set('data', output, function (err) {
       if (err) {
         throw err
       }
