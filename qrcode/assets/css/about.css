@@ -40,12 +40,12 @@
 .about-logo {
   display: block;
   margin: 0 auto;
-  width: 320px; /* TODO: Adjust asset to this size */
+  width: 160px; /* TODO: Adjust asset to this size */
   max-width: 100%;
 }
 
 .about-sections {
-  max-width: 680px;
+  max-width: 920px;
   padding: 0 var(--about-space);
 }
 
