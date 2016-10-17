@@ -6,10 +6,7 @@ const DeleteByIdInput = document.getElementById('delete-by-id-input')
 
 DeleteByIdBtn.addEventListener('click', function () {
   ipc.send('DeleteById-message', DeleteByIdInput.value)
-  if (DeleteByIdInput.value !== '') {
-    DeleteByIdInput.value = ''
-  }
-  DeleteByIdInput.placeholder = 'Deleted!'
+  DeleteByIdInput.value = ''
 })
 
 ipc.on('DeleteById-reply', function (event, arg) {

@@ -12,7 +12,7 @@ ipc.on('CreateByQrcode-message', function (event, arg) {
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
     }
-    let str = 'Already Have '+target+' !'
+    let str = '二维码中的OID标识编号 '+target+' 已存在'
     if (!output.hasOwnProperty(target)) {
       output[target] = [].concat(arr)
       str = target+','+output[target].toString()

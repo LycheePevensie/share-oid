@@ -11,7 +11,7 @@ ipc.on('RetrieveByQrcode-message', function (event, arg) {
     for (let oid in obj) {
       output[oid] = [].concat(obj[oid])
     }
-    let str = target+' Not Found!'
+    let str = '未找到二维码中的OID标识编号 '+target
     if (output.hasOwnProperty(target)) {
       str = target+','+output[target].toString()
     }
