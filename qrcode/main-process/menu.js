@@ -4,51 +4,99 @@ const Menu = electron.Menu
 const app = electron.app
 
 let template = [{
-  label: 'Edit',
+  label: '编辑',
   submenu: [{
-    label: 'Undo',
+    label: '撤销',
     accelerator: 'CmdOrCtrl+Z',
     role: 'undo'
   }, {
-    label: 'Redo',
+    label: '恢复',
     accelerator: 'Shift+CmdOrCtrl+Z',
     role: 'redo'
   }, {
     type: 'separator'
   }, {
-    label: 'Cut',
+    label: '剪切',
     accelerator: 'CmdOrCtrl+X',
     role: 'cut'
   }, {
-    label: 'Copy',
+    label: '复制',
     accelerator: 'CmdOrCtrl+C',
     role: 'copy'
   }, {
-    label: 'Paste',
+    label: '粘贴',
     accelerator: 'CmdOrCtrl+V',
     role: 'paste'
   }, {
-    label: 'Select All',
+    label: '全选',
     accelerator: 'CmdOrCtrl+A',
     role: 'selectall'
   }]
 }, {
-  label: 'Window',
+  label: '视图',
+  submenu: [{
+    label: '重新加载页面',
+    accelerator: 'CmdOrCtrl+R',
+    click: function (item, focusedWindow) {
+      if (focusedWindow) {
+        // on reload, start fresh and close any old
+        // open secondary windows
+        if (focusedWindow.id === 1) {
+          BrowserWindow.getAllWindows().forEach(function (win) {
+            if (win.id > 1) {
+              win.close()
+            }
+          })
+        }
+        focusedWindow.reload()
+      }
+    }
+  }, {
+    label: '切换全屏模式',
+    accelerator: (function () {
+      if (process.platform === 'darwin') {
+        return 'Ctrl+Command+F'
+      } else {
+        return 'F11'
+      }
+    })(),
+    click: function (item, focusedWindow) {
+      if (focusedWindow) {
+        focusedWindow.setFullScreen(!focusedWindow.isFullScreen())
+      }
+    }
+  }, {
+    label: '浏览器控制台',
+    accelerator: (function () {
+      if (process.platform === 'darwin') {
+        return 'Alt+Command+I'
+      } else {
+        return 'Ctrl+Shift+I'
+      }
+    })(),
+    click: function (item, focusedWindow) {
+      if (focusedWindow) {
+        focusedWindow.toggleDevTools()
+      }
+    }
+  }]
+}, {
+  label: '窗口',
   role: 'window',
   submenu: [{
-    label: 'Minimize',
+    label: '隐藏',
     accelerator: 'CmdOrCtrl+M',
     role: 'minimize'
   }, {
-    label: 'Close',
+    label: '关闭',
     accelerator: 'CmdOrCtrl+W',
     role: 'close'
   }]
 }, {
-  label: 'Help',
+  label: '帮助',
   role: 'help',
   submenu: [{
-    label: 'What is Electron?',
+    label: '关于Electron',
     click: function () {
       electron.shell.openExternal('http://electron.atom.io')
     }
